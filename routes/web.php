@@ -28,3 +28,9 @@ Route::multiauth('Admin', 'admin', [
     'confirm' => false,
     'register' => false
 ]);
+
+Route::multiauth('Analyst', 'analyst', [
+    'verify' => false,
+    'confirm' => false,
+    'register' => false
+]);

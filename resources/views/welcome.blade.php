@@ -428,7 +428,7 @@
                                 </path>
                                 <path d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
                             </svg>
-                            <div class="ml-4 text-lg leading-7 font-semibold"><a href="#"
+                            <div class="ml-4 text-lg leading-7 font-semibold"><a href="{{route('analyst.login')}}"
                                 class="underline text-gray-900 dark:text-white">Login Analista</a></div>
                         </div>
                     </div>
