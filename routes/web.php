@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\Analyst\Client\Index;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,3 +37,6 @@ Route::multiauth('Analyst', 'analyst', [
     'confirm' => false,
     'register' => false
 ]);
+
+
+
