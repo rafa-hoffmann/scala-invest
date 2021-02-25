@@ -15,6 +15,17 @@
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
+
+        <style>
+          body {
+            background: #eee;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 2%;
+            padding-bottom: 2%;
+          }
+        </style>
     </head>
     <body>
         <table class="shadow-lg bg-white">
@@ -35,16 +46,5 @@
             @endforeach
             </tbody>
         </table>
-
-        <style>
-          body {
-            background: #eee;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding-top: 2%;
-            padding-bottom: 2%;
-          }
-        </style>
     </body>
 </html>
