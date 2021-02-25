@@ -21,6 +21,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+Route::get('/quotes', 'App\Http\Controllers\Quotes@index');
+
 require __DIR__.'/auth.php';
 
 Route::multiauth('Admin', 'admin', [
