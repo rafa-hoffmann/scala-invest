@@ -24,6 +24,7 @@ class UpdateUsersTable extends Migration
             $table->string('district')->nullable();
             $table->string('state')->nullable();
             $table->string('zip_code')->nullable();
+            $table->enum('status',['ENVIADO','ATIVO','INATIVO'])->nullable();
 
             $table->foreign('analyst_id')->references('id')->on('analysts');
         });
