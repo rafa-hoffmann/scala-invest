@@ -14,7 +14,7 @@ class Dashboard extends Component
 {
     use WithPagination;
 
-    public  $name, $email, $user_id;
+    public  $name, $email, $user_id, $status;
     public $isOpen = 0;
     private $clients;
 
@@ -115,11 +115,18 @@ class Dashboard extends Component
      *
      * @var array
      */
-    // public function delete($id)
-    // {
-    //     $this->user_id = $id;
-    //     User::find($id)->delete();
-    //     session()->flash('message', 'Company deleted successfully.');
-    // }
+    public function delete($id)
+    {
+        $this->user_id = $id;
+        $user = User::findOrFail($id);
+        if($user->status == 'ATIVO'){
+            $user->status = 'INATIVO';
+        }
+        else if($user->status == 'INATIVO'){
+            $user->status = 'ATIVO';
+        }
+        $user->save();
+        session()->flash('message', 'Cadastro alterado.');
+    }
 
 }
