@@ -1,5 +1,14 @@
 <div>
-    
+@if (session()->has('message'))
+    <div id="alert" class="text-white p-2 mb-4 border-0 rounded bg-green-500 flex flex-row">
+        <span class="flex-1 nline-block align-middle mr-8">
+            {{ session('message') }}
+        </span>
+        <button class="justify-end" onclick="document.getElementById('alert').remove();">
+            <span>×</span>
+        </button>
+    </div>
+    @endif
     <div class="p-2 text-right">
         <button
             class='focus:outline-none text-white text-sm py-2.5 px-5 rounded-md bg-green-500 hover:bg-green-600 hover:shadow-lg'
@@ -58,10 +67,16 @@
                                             class="px-2 inline-flex text-sm leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                                             {{ucfirst(strtolower($client->status))}}
                                         </span>
-                                        
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        <a wire:click="edit({{ $client->id }})"  class="text-indigo-600 hover:text-indigo-900">Editar</a>
+                                        <a wire:click="edit({{ $client->id }})"  class="text-indigo-600 hover:text-indigo-900">Editar</a>/
+                                        @if($client->status == 'INATIVO')
+                                        <a href="#" wire:click.prevent="delete({{$client->id}})"
+                                            class="text-indigo-600 hover:text-indigo-900">Restaurar</a>
+                                        @else
+                                        <a href="#" wire:click.prevent="delete({{$client->id}})"
+                                            class="text-indigo-600 hover:text-indigo-900">Excluir</a>
+                                        @endif                                    
                                     </td>
                                 </tr>
                                 @endforeach
