@@ -115,11 +115,11 @@ class Dashboard extends Component
      *
      * @var array
      */
-    public function delete($id)
-    {
-        $this->user_id = $id;
-        User::find($id)->delete();
-        session()->flash('message', 'Company deleted successfully.');
-    }
+    // public function delete($id)
+    // {
+    //     $this->user_id = $id;
+    //     User::find($id)->delete();
+    //     session()->flash('message', 'Company deleted successfully.');
+    // }
 
 }
