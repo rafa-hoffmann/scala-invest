@@ -15,8 +15,11 @@ class StocksSeeder extends Seeder
     public function run()
     {
        
+            Stock::create(["symbol"=> "AZUL4", "name"=> "AZUL SA"]);
+            Stock::create(["symbol"=> "GOLL4", "name"=> "GOL LINHAS AEREAS"]);
              Stock::create(["symbol"=> "CEPE3", "name"=> "CIA ENERGETICA DE PERNAMBUCO"]);
              Stock::create(["symbol"=> "LAME3", "name"=> "LOJAS AMERICANAS SA"]);
+             Stock::create(["symbol"=> "LAME4", "name"=> "LOJAS AMERICANAS SA PREFERENCE SHARES"]);
              Stock::create(["symbol"=> "ALSO3", "name"=> "ALIANSCE SONAE SHOPPING CENT"]);
              Stock::create(["symbol"=> "OPCT3", "name"=> "OCEANPACT SERVICOS MARITIMOS"]);
              Stock::create(["symbol"=> "ESTR3", "name"=> "MANUF BRINQUEDOS ESTRELA SA"]);
@@ -31,6 +34,7 @@ class StocksSeeder extends Seeder
              Stock::create(["symbol"=> "TIET3", "name"=> "AES TIETE ENERGIA SA"]);
              Stock::create(["symbol"=> "PRIO3", "name"=> "PETRO RIO SA"]);
              Stock::create(["symbol"=> "ITSA3", "name"=> "ITAUSA SA"]);
+             Stock::create(["symbol"=> "ITSA4", "name"=> "ITAUSA SA PREFERENCE SHARES"]);
              Stock::create(["symbol"=> "RENT3", "name"=> "LOCALIZA RENT A CAR"]);
              Stock::create(["symbol"=> "LUXM3", "name"=> "TREVISA INVESTIMENTOS SA"]);
              Stock::create(["symbol"=> "LOGG3", "name"=> "LOG COMMERCIAL PROPERTIES E"]);
@@ -46,6 +50,7 @@ class StocksSeeder extends Seeder
              Stock::create(["symbol"=> "CRFB3", "name"=> "ATACADAO SA"]);
              Stock::create(["symbol"=> "BRML3", "name"=> "BR MALLS PARTICIPACOES SA"]);
              Stock::create(["symbol"=> "GOAU3", "name"=> "METALURGICA GERDAU SA"]);
+             Stock::create(["symbol"=> "GOAU4", "name"=> "METALURGICA GERDAU SA PREFERENCE SHARES"]);
              Stock::create(["symbol"=> "VLID3", "name"=> "VALID SOLUCOES SA"]);
              Stock::create(["symbol"=> "MULT3", "name"=> "MULTIPLAN EMPREENDIMENTOS"]);
              Stock::create(["symbol"=> "TPIS3", "name"=> "TPI - TRIUNFO PARTICIPACOES"]);
@@ -92,6 +97,7 @@ class StocksSeeder extends Seeder
              Stock::create(["symbol"=> "AALR3", "name"=> "CENTRO DE IMAGEM DIAGNOSTICO"]);
              Stock::create(["symbol"=> "JPSA3", "name"=> "JEREISSATI PARTICIPACOES SA"]);
              Stock::create(["symbol"=> "USIM3", "name"=> "USINAS SIDERURGICAS DE MINAS"]);
+             Stock::create(["symbol"=> "USIM5", "name"=> "USINAS SIDERURGICAS DE MINAS PREFERENCE SHARES"]);
              Stock::create(["symbol"=> "CVCB3", "name"=> "CVC BRASIL OPERADORA E AGENC"]);
              Stock::create(["symbol"=> "HAPV3", "name"=> "HAPVIDA PARTICIPACOES E INVE"]);
              Stock::create(["symbol"=> "YDUQ3", "name"=> "YDUQS PARTICIPACOES SA"]);
@@ -125,6 +131,7 @@ class StocksSeeder extends Seeder
              Stock::create(["symbol"=> "SIMH3", "name"=> "SIMPAR SA"]);
              Stock::create(["symbol"=> "CNSY3", "name"=> "CINESYSTEM SA"]);
              Stock::create(["symbol"=> "GGBR3", "name"=> "GERDAU S.A."]);
+             Stock::create(["symbol"=> "GGBR4", "name"=> "GERDAU S.A. PREFERENCE SHARES"]);
              Stock::create(["symbol"=> "ENMT3", "name"=> "ENERGISA MATO GROSSO DISTRIB"]);
              Stock::create(["symbol"=> "TELB3", "name"=> "TELECOMUNIC BRASILEIRAS S.A."]);
              Stock::create(["symbol"=> "CEGR3", "name"=> "CIA DISTRIBUIDORA DE GAS"]);
@@ -149,9 +156,11 @@ class StocksSeeder extends Seeder
              Stock::create(["symbol"=> "EMBR3", "name"=> "EMBRAER SA"]);
              Stock::create(["symbol"=> "SUZB3", "name"=> "SUZANO SA"]);
              Stock::create(["symbol"=> "BBDC3", "name"=> "BANCO BRADESCO S.A."]);
+             Stock::create(["symbol"=> "BBDC4", "name"=> "BANCO BRADESCO S.A. PREFERENCE SHARES"]);
              Stock::create(["symbol"=> "DASA3", "name"=> "DIAGNOSTICOS DA AMERICA SA"]);
              Stock::create(["symbol"=> "CEED3", "name"=> "CIA ESTADUAL DE DISTRIBUICAO"]);
              Stock::create(["symbol"=> "ELET3", "name"=> "CENTRAIS ELETRICAS BRASILIER"]);
+             Stock::create(["symbol"=> "ELET6", "name"=> "CENTRAIS ELETRICAS BRASILIER PREFERENCE SHARES"]);
              Stock::create(["symbol"=> "SMAC11", "name"=> "IT NOW ETF SMLL"]);
              Stock::create(["symbol"=> "NEOE3", "name"=> "NEOENERGIA SA"]);
              Stock::create(["symbol"=> "PFRM3", "name"=> "PROFARMA DISTRIBUIDORA"]);
@@ -185,8 +194,10 @@ class StocksSeeder extends Seeder
              Stock::create(["symbol"=> "ATOM3", "name"=> "ATOM PARTICIPACOES SA"]);
              Stock::create(["symbol"=> "CARD3", "name"=> "CSU CARDSYSTEM SA"]);
              Stock::create(["symbol"=> "CMIG3", "name"=> "CIA ENERGETICA DE MINAS GER"]);
+             Stock::create(["symbol"=> "CMIG4", "name"=> "CIA ENERGETICA DE MINAS GER PREFERENCE SHARES"]);
              Stock::create(["symbol"=> "TAEE3", "name"=> "TRANSMISSORA ALIANCA DE - ON"]);
              Stock::create(["symbol"=> "TIMS3", "name"=> "TIM SA"]);
+             Stock::create(["symbol"=> "TIMP3", "name"=> "TIM PART SA"]);
              Stock::create(["symbol"=> "BOAS3", "name"=> "BOA VISTA SERVICOS SA"]);
              Stock::create(["symbol"=> "CSAB3", "name"=> "CIA SEGUROS ALIANCA DA BAHIA"]);
              Stock::create(["symbol"=> "SEER3", "name"=> "SER EDUCACIONAL SA"]);
@@ -213,11 +224,13 @@ class StocksSeeder extends Seeder
              Stock::create(["symbol"=> "RDNI3", "name"=> "RNI NEGOCIOS IMOBILIARIOS SA"]);
              Stock::create(["symbol"=> "UNIP3", "name"=> "UNIPAR CARBOCLORO SA-ORD"]);
              Stock::create(["symbol"=> "ITUB3", "name"=> "ITAU UNIBANCO HOLDING SA"]);
+             Stock::create(["symbol"=> "ITUB4", "name"=> "ITAU UNIBANCO HOLDING SA PREFERENCE SHARES"]);
              Stock::create(["symbol"=> "DTCY3", "name"=> "DTCOM-DIRECT TO COMPANY SA"]);
              Stock::create(["symbol"=> "FNCN3", "name"=> "FINANSINOS SA"]);
              Stock::create(["symbol"=> "STKF3", "name"=> "STATKRAFT ENERGIAS RENOVAVEI"]);
              Stock::create(["symbol"=> "VSPT3", "name"=> "FERROVIA CENTRO-ATLANTICA SA"]);
              Stock::create(["symbol"=> "PCAR3", "name"=> "CIA BRASILEIRA DE DISTRIBUIC"]);
+             Stock::create(["symbol"=> "PCAR4", "name"=> "CIA BRASILEIRA DE DISTRIBUIC PREFERENCE SHARES"]);
              Stock::create(["symbol"=> "INEP3", "name"=> "INEPAR SA INDUSTRIA E CONSTR"]);
              Stock::create(["symbol"=> "PINE3", "name"=> "BANCO PINE SA"]);
              Stock::create(["symbol"=> "MMXM3", "name"=> "MMX MINERACAO E METALICOS SA"]);
@@ -246,6 +259,7 @@ class StocksSeeder extends Seeder
              Stock::create(["symbol"=> "APER3", "name"=> "ALPER CONSULTORIA E CORRETOR"]);
              Stock::create(["symbol"=> "BAZA3", "name"=> "BANCO DA AMAZONIA SA"]);
              Stock::create(["symbol"=> "PETR3", "name"=> "PETROBRAS - PETROLEO BRAS"]);
+             Stock::create(["symbol"=> "PETR4", "name"=> "PETROBRAS - PETROLEO BRAS PREFERENCE SHARES"]);
              Stock::create(["symbol"=> "OMGE3", "name"=> "OMEGA GERACAO SA"]);
              Stock::create(["symbol"=> "IGSN3", "name"=> "IGUA SA"]);
              Stock::create(["symbol"=> "SAPR3", "name"=> "CIA DE SANEAMENTO DO PARANA"]);
@@ -259,6 +273,7 @@ class StocksSeeder extends Seeder
              Stock::create(["symbol"=> "SANB11", "name"=> "BANCO SANTANDER  BRASIL-UNIT"]);
              Stock::create(["symbol"=> "COGN3", "name"=> "COGNA EDUCACAO"]);
              Stock::create(["symbol"=> "VIVT3", "name"=> "TELEFONICA BRASIL S.A."]);
+             Stock::create(["symbol"=> "VIVT4", "name"=> "TELEFONICA BRASIL S.A. PREFERENCE SHARES"]);
              Stock::create(["symbol"=> "GUAR3", "name"=> "GUARARAPES CONFECCOES SA"]);
              Stock::create(["symbol"=> "RLOG3", "name"=> "COSAN LOGISTICA SA"]);
              Stock::create(["symbol"=> "IRFM11", "name"=> "IT NOW IRF-M"]);
@@ -310,6 +325,7 @@ class StocksSeeder extends Seeder
              Stock::create(["symbol"=> "HBTS3", "name"=> "CIA HABITASUL DE PARTICIPACO"]);
              Stock::create(["symbol"=> "CRPG3", "name"=> "CRISTAL PIGMENTOS DO BRASIL"]);
              Stock::create(["symbol"=> "BRAP3", "name"=> "BRADESPAR SA"]);
+             Stock::create(["symbol"=> "BRAP4", "name"=> "BRADESPAR SA PREFERENCE SHARES"]);
              Stock::create(["symbol"=> "LEVE3", "name"=> "MAHLE-METAL LEVE SA"]);
              Stock::create(["symbol"=> "DMMO9", "name"=> "DOMMO ENERGIA SA - RCPT"]);
              Stock::create(["symbol"=> "RADL3", "name"=> "RAIA DROGASIL SA"]);
@@ -382,6 +398,7 @@ class StocksSeeder extends Seeder
              Stock::create(["symbol"=> "RDOR3", "name"=> "REDE D'OR SAO LUIZ SA"]);
              Stock::create(["symbol"=> "BBAS3", "name"=> "BANCO DO BRASIL S.A."]);
              Stock::create(["symbol"=> "BRKM3", "name"=> "BRASKEM SA"]);
+             Stock::create(["symbol"=> "BRKM5", "name"=> "BRASKEM SAPREFERENCE SHARES"]);
              Stock::create(["symbol"=> "XINA11", "name"=> "ETF TREND MSCI CHINA"]);
              Stock::create(["symbol"=> "GRND3", "name"=> "GRENDENE SA"]);
              Stock::create(["symbol"=> "TECN3", "name"=> "TECHNOS SA"]);
@@ -403,5 +420,7 @@ class StocksSeeder extends Seeder
              Stock::create(["symbol"=> "ETER9", "name"=> "ETERNIT SA -RCT"]);
              Stock::create(["symbol"=> "BMEB3", "name"=> "BANCO MERCANTIL DO BRASIL SA"]);
              Stock::create(["symbol"=> "ENAT3", "name"=> "ENAUTA PARTICIPACOES SA"]);
+
+             
     }
 }
