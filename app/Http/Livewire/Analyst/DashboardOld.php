@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class Dashboard extends Component
+class DashboardOld extends Component
 {
     use WithPagination;
 

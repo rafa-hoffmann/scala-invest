@@ -88,7 +88,7 @@ class Dashboard extends Component
             'name'=>$this->name,
             'email'=>$this->email,
             'analyst_id'=>Auth::guard('analyst')->id(),
-            'password'=>$password,
+            'password'=>Hash::make($password),
             'status'=>'ENVIADO', //Possiveis valores: ENVIADO,ATIVO,INATIVO
         ]);
         session()->flash('message', $this->user_id ? 'Cliente atualizado.' : 'Cliente criado.');
