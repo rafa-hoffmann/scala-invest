@@ -19,7 +19,7 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('client.dashboard');
 })->middleware(['auth'])->name('dashboard');
 
 Route::get('/quotes', 'App\Http\Controllers\Quotes@index');
