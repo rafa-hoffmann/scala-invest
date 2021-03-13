@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Client\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -29,6 +30,17 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request)
     {
         $request->authenticate();
+
+        $credentials = $request->only('email');
+        
+
+        if(User::where('email', $credentials['email'])->first()->status == 'INATIVO'){
+            return back()->withErrors([
+                'email' => 'Este usuário não está mais ativo.',
+            ]);
+        }
+
+        dd($credentials['email']);
 
         $request->session()->regenerate();
 

@@ -1,3 +1,6 @@
+@if($deleteModalOpen)
+    @include('client.livewire.delete_profile')
+@endif
 <div>
         <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
             <div class="">
@@ -118,8 +121,14 @@
                 </div>
             </div>
         </div>
-        <div class="px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-            <span class="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
+        <div class="px-4 py-3 sm:px-6 sm:flex sm:flex-row justify-between">
+            <span class="flex w-full rounded-md shadow-sm sm:w-auto">
+                <button wire:click="showDeleteModal"
+                    class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-red-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-red-500 focus:outline-none focus:border-red-700 focus:shadow-outline-red transition ease-in-out duration-150 sm:text-sm sm:leading-5">
+                    Excluir conta
+                </button>
+            </span>
+            <span class="flex w-full rounded-md shadow-sm sm:w-auto">
                 <button wire:click="save"
                     class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-green-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-green-500 focus:outline-none focus:border-green-700 focus:shadow-outline-green transition ease-in-out duration-150 sm:text-sm sm:leading-5">
                     @if ($status!='ATIVO')

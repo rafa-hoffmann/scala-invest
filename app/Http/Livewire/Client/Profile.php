@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Client;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class Profile extends Component
 {
@@ -26,6 +27,7 @@ class Profile extends Component
     public $analystId;
     public $oldPassword;
     public $newPassword;
+    public $deleteModalOpen = false;
 
     protected $rules = [
         'name' => 'required|min:2',
@@ -116,5 +118,27 @@ class Profile extends Component
     public function render()
     {
         return view('client.livewire.profile');
+    }
+
+    public function showDeleteModal(){
+        $this->deleteModalOpen = true;
+    }
+
+    public function closeModal()
+    {
+        $this->deleteModalOpen = false;
+    }
+
+    public function deactivateAccount(){
+        $user = User::findOrFail($this->userId);
+        $user->status = 'INATIVO';
+        $user->save();
+        Auth::guard('web')->logout();
+
+        session()->invalidate();
+
+        session()->regenerateToken();
+
+        return redirect('/');
     }
 }
