@@ -29,19 +29,13 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request)
     {
-        $request->authenticate();
-
         $credentials = $request->only('email');
-        
-
-        if(User::where('email', $credentials['email'])->first()->status == 'INATIVO'){
+        if (User::where('email', $credentials['email'])->first()->status == 'INATIVO') {
             return back()->withErrors([
                 'email' => 'Este usuário não está mais ativo.',
             ]);
         }
-
-        dd($credentials['email']);
-
+        $request->authenticate();
         $request->session()->regenerate();
 
         return redirect()->intended(RouteServiceProvider::HOME);
