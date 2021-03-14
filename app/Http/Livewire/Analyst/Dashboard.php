@@ -2,19 +2,32 @@
 
 namespace App\Http\Livewire\Analyst;
 
+use App\Mail\ClientCreated;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 use Livewire\Component;
 use Livewire\WithPagination;
-use Ramsey\Uuid\Generator\PeclUuidRandomGenerator;
-use Ramsey\Uuid\Generator\RandomGeneratorFactory;
+
+use function Ramsey\Uuid\v1;
 
 class Dashboard extends Component
 {
     use WithPagination;
 
-    public  $name, $email, $user_id, $status;
+    public  $name, $email, $user_id, $status, $last_name;
+    public $rg;
+    public $cpf;
+    public $phone;
+    public $street;
+    public $number;
+    public $complement;
+    public $neighborhood;
+    public $city;
+    public $state;
+    public $zip_code;
     public $isOpen = 0;
     private $clients;
 
@@ -69,6 +82,17 @@ class Dashboard extends Component
     private function resetInputFields(){
         $this->name = '';
         $this->user_id = '';
+        $this->last_name = '';
+        $this->rg = '';
+        $this->cpf = '';
+        $this->phone = '';
+        $this->street = '';
+        $this->number = '';
+        $this->complement = '';
+        $this->neighborhood = '';
+        $this->city = '';
+        $this->state = '';
+        $this->zip_code = '';
     }
 
     /**
@@ -82,15 +106,49 @@ class Dashboard extends Component
         $this->validate([
             'name' => 'required|string',
             'email' => 'required|email|unique:users,email,'.$this->user_id,
+            'last_name' => 'required|min:2',
+            'rg' => 'required|min:4',
+            'cpf' => 'required|min:4',
+            'phone' => 'required|min:4',
+            'street' => 'required|min:4',
+            'number' => 'required|min:1',
+            'neighborhood' => 'required|min:1',
+            'city' => 'required|min:4',
+            'state' => 'required|min:2',
+            'zip_code' => 'required|min:4'
         ]);
-        $password = 1234;
-        $this->clients[] = User::updateOrCreate(['id' => $this->user_id],[
+        $password = Str::random(10);
+        $data = [
             'name'=>$this->name,
             'email'=>$this->email,
-            'analyst_id'=>Auth::guard('analyst')->id(),
-            'password'=>Hash::make($password),
-            'status'=>'ENVIADO', //Possiveis valores: ENVIADO,ATIVO,INATIVO
-        ]);
+            'last_name' => $this->last_name,
+            'rg' => $this->rg,
+            'cpf' => $this->cpf,
+            'phone' => $this->phone,
+            'street' => $this->street,
+            'number' => $this->number,
+            'complement' => $this->complement,
+            'neighborhood' => $this->neighborhood,
+            'city' => $this->city,
+            'state' => $this->state,
+            'zip_code' => $this->zip_code,
+            'analyst_id'=>Auth::guard('analyst')->id()
+        ];   
+
+        $old = User::find($this->user_id);
+
+        if($old == null || $old['email'] != $data['email']){
+            $data['password'] = Hash::make($password);
+            $data['status'] = 'ENVIADO';
+        }
+
+        $user = User::updateOrCreate(['id' => $this->user_id],$data);
+        $this->clients[] = $user;
+
+        if(!empty($data['password'])){
+            Mail::to($user)->send(new ClientCreated($data['name'], $data['password']));
+        }
+
         session()->flash('message', $this->user_id ? 'Cliente atualizado.' : 'Cliente criado.');
         $this->closeModal();
         $this->resetInputFields();
@@ -107,6 +165,17 @@ class Dashboard extends Component
         $this->user_id = $id;
         $this->name = $user->name;
         $this->email = $user->email;
+        $this->last_name = $user->last_name;
+        $this->rg = $user->rg;
+        $this->cpf = $user->cpf;
+        $this->phone = $user->phone;
+        $this->street = $user->street;
+        $this->number = $user->number;
+        $this->complement = $user->complement;
+        $this->neighborhood = $user->neighborhood;
+        $this->city = $user->city;
+        $this->state = $user->state;
+        $this->zip_code = $user->zip_code;
         $this->openModal();
     }
 
