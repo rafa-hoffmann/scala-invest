@@ -26,6 +26,86 @@
                                     id="exampleFormControlInput2" wire:model="email" placeholder="Email">
                                 @error('email') <span class="text-red-500">{{ $message }}</span>@enderror
                             </div>
+                            <div class="mb-4">
+                                <label for="exampleFormControlInput4"
+                                    class="block text-gray-700 text-sm font-bold mb-2">RG:</label>
+                                <input type='text'
+                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    id="exampleFormControlInput4" wire:model="rg" placeholder="RG">
+                                @error('rg') <span class="text-red-500">{{ $message }}</span>@enderror
+                            </div>
+                            <div class="mb-4">
+                                <label for="exampleFormControlInput5"
+                                    class="block text-gray-700 text-sm font-bold mb-2">CPF:</label>
+                                <input type='text'
+                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    id="exampleFormControlInput5" wire:model="cpf" placeholder="CPF">
+                                @error('cpf') <span class="text-red-500">{{ $message }}</span>@enderror
+                            </div>
+                            <div class="mb-4">
+                                <label for="exampleFormControlInput6"
+                                    class="block text-gray-700 text-sm font-bold mb-2">Telefone:</label>
+                                <input type='text'
+                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    id="exampleFormControlInput6" wire:model="phone" placeholder="Telefone">
+                                @error('phone') <span class="text-red-500">{{ $message }}</span>@enderror
+                            </div>
+                            <div class="mb-4">
+                                <label for="exampleFormControlInput7"
+                                    class="block text-gray-700 text-sm font-bold mb-2">Rua:</label>
+                                <input type='text'
+                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    id="exampleFormControlInput7" wire:model="street" placeholder="Rua">
+                                @error('street') <span class="text-red-500">{{ $message }}</span>@enderror
+                            </div>
+                            <div class="mb-4">
+                                <label for="exampleFormControlInput8"
+                                    class="block text-gray-700 text-sm font-bold mb-2">Número:</label>
+                                <input type='text'
+                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    id="exampleFormControlInput8" wire:model="number" placeholder="Número">
+                                @error('number') <span class="text-red-500">{{ $message }}</span>@enderror
+                            </div>
+                            <div class="mb-4">
+                                <label for="exampleFormControlInput9"
+                                    class="block text-gray-700 text-sm font-bold mb-2">Complemento:</label>
+                                <input type='text'
+                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    id="exampleFormControlInput9" wire:model="complement" placeholder="Complemento">
+                                @error('complement') <span class="text-red-500">{{ $message }}</span>@enderror
+                            </div>
+                            <div class="mb-4">
+                                <label for="exampleFormControlInput10"
+                                    class="block text-gray-700 text-sm font-bold mb-2">Bairro:</label>
+                                <input type='text'
+                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    id="exampleFormControlInput10" wire:model="neighborhood" placeholder="Bairro">
+                                @error('neighborhood') <span class="text-red-500">{{ $message }}</span>@enderror
+                            </div>
+                            <div class="mb-4">
+                                <label for="exampleFormControlInput11"
+                                    class="block text-gray-700 text-sm font-bold mb-2">Cidade:</label>
+                                <input type='text'
+                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    id="exampleFormControlInput11" wire:model="city" placeholder="Cidade">
+                                @error('city') <span class="text-red-500">{{ $message }}</span>@enderror
+                            </div>
+                            <div class="mb-4">
+                                <label for="exampleFormControlInput12"
+                                    class="block text-gray-700 text-sm font-bold mb-2">Estado:</label>
+                                <input type='text'
+                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    id="exampleFormControlInput12" wire:model="state" placeholder="Estado">
+                                @error('state') <span class="text-red-500">{{ $message }}</span>@enderror
+                            </div>
+                            <div class="mb-4">
+                                <label for="exampleFormControlInput12"
+                                    class="block text-gray-700 text-sm font-bold mb-2">CEP:</label>
+                                <input type='text'
+                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    id="exampleFormControlInput12" wire:model="zip_code" placeholder="CEP">
+                                @error('zip_code') <span class="text-red-500">{{ $message }}</span>@enderror
+                            </div>
                         </div>
                     </div>
                     <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
