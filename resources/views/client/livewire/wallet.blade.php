@@ -2,9 +2,9 @@
     <div class="flex flex-wrap w-full justify-end">
         <div class="px-2 w-2/12 overflow-hidden">
             <div class="flex flex-col space-y-2">
-                <button class="bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-10 rounded-full">
+                <a class="bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-10 rounded-full" href="{{route('wallet.update')}}">
                     Nova Carteira
-                </button>
+                </a>
             </div>
         </div>
     </div>
