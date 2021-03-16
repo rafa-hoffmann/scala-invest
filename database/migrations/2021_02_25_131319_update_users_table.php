@@ -14,7 +14,7 @@ class UpdateUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->unsignedBigInteger('analyst_id')->after('id'); 
+            $table->unsignedBigInteger('analyst_id')->after('id');
             $table->string('last_name')->nullable();
             $table->string('rg')->nullable();
             $table->string('cpf')->nullable();
@@ -37,6 +37,6 @@ class UpdateUsersTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('users');
     }
 }

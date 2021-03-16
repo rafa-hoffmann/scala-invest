@@ -15,10 +15,11 @@ class CreateStockWalletTable extends Migration
     {
         Schema::create('stock_wallet', function (Blueprint $table) {
             $table->id();
-            $table->string('symbol_id');
+            $table->string('stock_symbol');
             $table->unsignedBigInteger('wallet_id');
-            $table->foreign('symbol_id')->references('symbol')->on('stocks');
+            $table->foreign('stock_symbol')->references('symbol')->on('stocks');
             $table->foreign('wallet_id')->references('id')->on('wallets');
+            $table->unsignedDecimal('goal')->default(0);
             $table->timestamps();
         });
     }

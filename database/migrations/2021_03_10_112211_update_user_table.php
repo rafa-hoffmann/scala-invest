@@ -28,6 +28,6 @@ class UpdateUserTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('users');
     }
 }
