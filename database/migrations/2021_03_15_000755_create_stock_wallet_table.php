@@ -17,9 +17,10 @@ class CreateStockWalletTable extends Migration
             $table->id();
             $table->string('stock_symbol');
             $table->unsignedBigInteger('wallet_id');
-            $table->foreign('stock_symbol')->references('symbol')->on('stocks');
-            $table->foreign('wallet_id')->references('id')->on('wallets');
+            $table->foreign('stock_symbol')->references('symbol')->on('stocks')->onDelete('cascade');;
+            $table->foreign('wallet_id')->references('id')->on('wallets')->onDelete('cascade');;
             $table->unsignedDecimal('goal')->default(0);
+            $table->unsignedBigInteger('comprado')->default(0);
             $table->timestamps();
         });
     }
