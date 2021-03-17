@@ -30,7 +30,8 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request)
     {
         $credentials = $request->only('email');
-        if (User::where('email', $credentials['email'])->first()->status == 'INATIVO') {
+        $user = User::where('email', $credentials['email'])->first();
+        if (!empty($user) && $user->status == 'INATIVO') {
             return back()->withErrors([
                 'email' => 'Este usuário não está mais ativo.',
             ]);
