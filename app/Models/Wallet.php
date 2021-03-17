@@ -14,6 +14,6 @@ class Wallet extends Model
     ];
 
     public function stocks() {
-        return $this->belongsToMany(Stock::class)->withPivot('id', 'goal');
+        return $this->belongsToMany(Stock::class)->withPivot('id', 'goal', 'comprado');
     }
 }

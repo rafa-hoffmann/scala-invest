@@ -14,6 +14,11 @@ class Stock extends Model
 
     public function wallets()
     {
-        return $this->belongsToMany(Wallet::class)->withPivot('id', 'goal');
+        return $this->belongsToMany(Wallet::class)->withPivot('id', 'goal', 'comprado');
+    }
+
+    public function last_quote()
+    {
+        return $this->hasOne(LastQuote::class, 'symbol', 'symbol');
     }
 }

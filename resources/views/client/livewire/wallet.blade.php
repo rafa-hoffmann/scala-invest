@@ -62,25 +62,25 @@
                                             {{$stock->symbol}}
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
-
+                                            TODO
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            {{$stock->comprado}}
+                                            {{$stock->pivot->comprado}}
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            COTAÇÃO
+                                            R$ {{number_format($stock->last_quote->price, 2, ',', '.')}}
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            Patrimônio
+                                            R$ {{number_format($stock->last_quote->price * $stock->pivot->comprado, 2, ',', '.')}}
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            Participação
+                                            TODO
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            Objetivo
+                                            {{$stock->pivot->goal}}%
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            Distância
+                                            TODO
                                         </td>
                                     </tr>
                                     @endforeach

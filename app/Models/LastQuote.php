@@ -12,4 +12,9 @@ class LastQuote extends Model
     protected $primaryKey = 'symbol';
     protected $keyType = 'string';
     public $incrementing = false;
+
+    public function stock()
+    {
+        return $this->belongsTo(Stock::class, 'symbol', 'symbol');
+    }
 }
