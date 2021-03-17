@@ -2,8 +2,10 @@
 
 namespace App\Http\Livewire\Client;
 
+use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class Profile extends Component
 {
@@ -24,6 +26,8 @@ class Profile extends Component
     public $status;
     public $analystId;
     public $oldPassword;
+    public $newPassword;
+    public $deleteModalOpen = false;
 
     protected $rules = [
         'name' => 'required|min:2',
@@ -37,7 +41,8 @@ class Profile extends Component
         'neighborhood' => 'required|min:1',
         'city' => 'required|min:4',
         'state' => 'required|min:4',
-        'zip_code' => 'required|min:4'
+        'zip_code' => 'required|min:4',
+        'newPassword' => 'password'
     ];
 
     public function mount()
@@ -62,12 +67,7 @@ class Profile extends Component
         $this->oldPassword = $model->password;
     }
 
-    public function render()
-    {
-        return view('client.livewire.profile');
-    }
-
-    public function store()
+    public function save()
     {
         $this->validate([
             'name' => 'required|string',
@@ -83,7 +83,7 @@ class Profile extends Component
             'state' => 'required|min:2',
             'zip_code' => 'required|min:4'
         ]);
-        User::updateOrCreate(['id' => $this->userId],[
+        $data = [
             'name'=>$this->name,
             'email'=>$this->email,
             'analyst_id'=>$this->analystId,
@@ -100,7 +100,45 @@ class Profile extends Component
             'state' => $this->state,
             'zip_code' => $this->zip_code,
             'status'=>'ATIVO', //Possiveis valores: ENVIADO,ATIVO,INATIVO
-        ]);
+        ];
+
+        if (!empty($this->newPassword)) {
+            $this->validate([
+                'newPassword' => 'required|min:4'
+            ]);
+            $data['password'] = Hash::make($this->newPassword);
+        }
+
+        User::updateOrCreate(['id' => $this->userId],$data);
+        
         session()->flash('message', 'Cadastro atualizado.');
+        return redirect()->to('/client/profile');
+    }
+
+    public function render()
+    {
+        return view('client.livewire.profile');
+    }
+
+    public function showDeleteModal(){
+        $this->deleteModalOpen = true;
+    }
+
+    public function closeModal()
+    {
+        $this->deleteModalOpen = false;
+    }
+
+    public function deactivateAccount(){
+        $user = User::findOrFail($this->userId);
+        $user->status = 'INATIVO';
+        $user->save();
+        Auth::guard('web')->logout();
+
+        session()->invalidate();
+
+        session()->regenerateToken();
+
+        return redirect('/');
     }
 }

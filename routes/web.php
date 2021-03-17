@@ -20,7 +20,11 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('client.dashboard');
-})->middleware(['auth'])->name('dashboard');
+})->middleware(['auth','activeClient'])->name('dashboard');
+
+Route::get('/wallets/update', function () {
+    return view('client.wallets.update');
+})->middleware(['auth'])->name('wallet.update');
 
 Route::get('/quotes', 'App\Http\Controllers\Quotes@index');
 
