@@ -81,7 +81,7 @@ class Dashboard extends Component
      */
     private function resetInputFields(){
         $this->name = '';
-        $this->user_id = '';
+        unset($this->user_id);
         $this->last_name = '';
         $this->rg = '';
         $this->cpf = '';
@@ -146,7 +146,7 @@ class Dashboard extends Component
         $this->clients[] = $user;
 
         if(!empty($data['password'])){
-            Mail::to($user)->send(new ClientCreated($data['name'], $data['password']));
+            Mail::to($user)->send(new ClientCreated($data['name'], $password));
         }
 
         session()->flash('message', $this->user_id ? 'Cliente atualizado.' : 'Cliente criado.');

@@ -20,6 +20,14 @@
                             </div>
                             <div class="mb-4">
                                 <label for="exampleFormControlInput2"
+                                    class="block text-gray-700 text-sm font-bold mb-2">Sobrenome:</label>
+                                <input type='text'
+                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    id="exampleFormControlInput2" wire:model="last_name" placeholder="Sobrenome">
+                                @error('last_name') <span class="text-red-500">{{ $message }}</span>@enderror
+                            </div>
+                            <div class="mb-4">
+                                <label for="exampleFormControlInput2"
                                     class="block text-gray-700 text-sm font-bold mb-2">Email:</label>
                                 <input type='email'
                                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
