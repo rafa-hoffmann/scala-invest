@@ -1,6 +1,6 @@
 <div>
 @if (session()->has('message'))
-    <div id="alert" class="text-white p-2 mb-4 border-0 rounded bg-green-500 flex flex-row">
+    <div id="alert" class="text-white p-2 mb-4 border-0 rounded-full bg-green-500 flex flex-row">
         <span class="flex-1 nline-block align-middle mr-8">
             {{ session('message') }}
         </span>
