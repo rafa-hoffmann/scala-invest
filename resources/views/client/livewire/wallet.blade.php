@@ -77,7 +77,7 @@
                                             TODO
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            {{$stock->pivot->goal}}%
+                                            {{number_format($stock->pivot->goal, 2, ',', '.')}}%
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             TODO
