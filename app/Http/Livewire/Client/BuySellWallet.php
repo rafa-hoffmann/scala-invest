@@ -21,7 +21,7 @@ class BuySellWallet extends Component
     public function mount(Request $request)
     {
         $this->walletID = $request->id;
-        $wallet = Wallet::firstOrCreate(['id' => $this->walletID], ['name' => $this->name])->load('stocks');
+        $wallet = auth()->user()->wallets()->firstOrCreate(['id' => $this->walletID], ['name' => $this->name])->load('stocks');
         foreach($wallet->stocks as $stock) {
             $this->selectedQnt[$stock->pivot->id] = 0;
         }

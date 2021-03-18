@@ -10,7 +10,7 @@ class Wallet extends Component
     public $wallets;
 
     public function mount() {
-        $wallets = ModelsWallet::withCount('stocks')->with('stocks', 'stocks.last_quote')->get();
+        $wallets = auth()->user()->wallets()->withCount('stocks')->with('stocks', 'stocks.last_quote')->get();
         foreach ($wallets as $wallet) {
             if ($wallet->stocks_count == 0) {
                 $wallet->delete();
