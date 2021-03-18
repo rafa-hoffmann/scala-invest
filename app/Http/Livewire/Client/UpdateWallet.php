@@ -3,7 +3,6 @@
 namespace App\Http\Livewire\Client;
 
 use App\Models\Stock;
-use App\Models\Wallet;
 use Illuminate\Http\Request;
 use Livewire\Component;
 
