@@ -13,7 +13,17 @@ class Wallet extends Model
         'name'
     ];
 
+    protected $appends = ['soma_patrimonio'];
+
     public function stocks() {
         return $this->belongsToMany(Stock::class)->withPivot('id', 'goal', 'comprado');
+    }
+
+    public function getSomaPatrimonioAttribute(){
+        $soma = 0;
+        foreach($this->stocks as $stock){
+            $soma += $stock->patrimonio_att;
+        }
+        return $soma;
     }
 }
