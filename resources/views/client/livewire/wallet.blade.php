@@ -57,6 +57,7 @@
                                 </thead>
                                 <tbody class="bg-white divide-y divide-gray-200">
                                     @foreach($wallet->stocks as $stock)
+
                                     <tr>
                                         <td class="pr-6 py-4 whitespace-nowrap">
                                             {{$stock->symbol}}
@@ -71,16 +72,16 @@
                                             R$ {{number_format($stock->last_quote->price, 2, ',', '.')}}
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            R$ {{number_format($stock->last_quote->price * $stock->pivot->comprado, 2, ',', '.')}}
+                                            R$ {{number_format($stock->patrimonio_att, 2, ',', '.')}}
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            TODO
+                                            {{($wallet->soma_patrimonio == 0)?0.00:number_format($stock->patrimonio_att / $wallet->soma_patrimonio * 100 , 2, ',', '.')}} %
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             {{number_format($stock->pivot->goal, 2, ',', '.')}}%
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            TODO
+                                            {{number_format(((($wallet->soma_patrimonio == 0)?0:$stock->patrimonio_att / $wallet->soma_patrimonio * 100) - $stock->pivot->goal),2,',','.')}} %
                                         </td>
                                     </tr>
                                     @endforeach
@@ -96,7 +97,7 @@
                 <a class="bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full text-center" href="{{route('wallet.update', ['id' => $wallet->id])}}">
                     Atualizar
                 </a>
-                <a class="bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded-full text-center">
+                <a class="bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded-full text-center" href="{{route('wallet.buysell', ['id' => $wallet->id])}}">
                     Compra / Venda
                 </a>
             </div>
