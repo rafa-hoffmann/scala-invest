@@ -101,12 +101,4 @@
             Voltar
         </a>
     </div>
-    <div id="autoSave" class="text-white p-2 my-2 border border-blue-500 bg-blue-400 rounded-full flex flex-row">
-        <span class="flex-1 inline-block align-middle mr-8">
-            As alterações são salvas automaticamente.
-        </span>
-        <button class="justify-end mr-5" onclick="document.getElementById('autoSave').remove();">
-            <span>×</span>
-        </button>
-    </div>
 </div>
