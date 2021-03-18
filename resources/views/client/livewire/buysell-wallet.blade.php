@@ -97,9 +97,6 @@
         </div>
     </div>
     <div class="flex w-full justify-center my-10 space-x-5">
-        <button class="bg-red-700 hover:bg-red-900 text-white font-bold py-2 px-4 rounded-full w-2/12" wire:click="removeWallet">
-            Excluir Carteira
-        </button>
         <a class="bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded-full w-2/12 text-center" href="{{route('dashboard')}}">
             Voltar
         </a>
