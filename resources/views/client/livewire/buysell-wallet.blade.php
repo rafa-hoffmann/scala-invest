@@ -3,7 +3,7 @@
         <div class="my-1 px-1 w-full overflow-hidden md:w-1/2">
             <x-label for="name" :value="__('Nome')" />
             <x-input id="name" class="w-full xl:w-9/12 mt-1" type="text" name="name" :value="old('name')" required
-                autofocus wire:model="name" />
+                autofocus wire:model="name" disabled />
             @error('name')
             <div class="text-white p-2 my-2 border-0 rounded-full bg-red-500 flex flex-row">
                 <span class="flex-1 inline-block align-middle mr-8">
