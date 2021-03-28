@@ -25,11 +25,11 @@
                 <div class="px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                     <span class="flex w-full sm:ml-3 sm:w-auto">
                         <button type="submit"
-                            class="inline-flex bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Salvar</button>
+                            class="inline-flex bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">Salvar</button>
                     </span>
                     <span class="mt-3 flex w-full sm:mt-0 sm:w-auto">
                         <button wire:click="closeModal()" type="button"
-                            class="inline-flex bg-white hover:bg-gray-200 border border-gray-300 text-gray-500 font-bold py-2 px-4 rounded">Cancelar</button>
+                            class="inline-flex bg-white hover:bg-gray-200 border border-gray-300 text-gray-500 font-bold py-2 px-4 rounded-full">Cancelar</button>
                     </span>
                 </div>
             </form>
@@ -37,7 +37,7 @@
     </x-modal>
     @endif
     @if (session()->has('message'))
-    <div id="alert" class="text-white p-2 mb-4 border-0 rounded bg-green-500 flex flex-row">
+    <div id="alert" class="text-white p-2 mb-4 border-0 rounded-full bg-green-500 flex flex-row">
         <span class="flex-1 nline-block align-middle mr-8">
             {{ session('message') }}
         </span>

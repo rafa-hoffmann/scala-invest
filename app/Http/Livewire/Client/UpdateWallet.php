@@ -3,7 +3,6 @@
 namespace App\Http\Livewire\Client;
 
 use App\Models\Stock;
-use App\Models\Wallet;
 use Illuminate\Http\Request;
 use Livewire\Component;
 
@@ -21,7 +20,7 @@ class UpdateWallet extends Component
     public function mount(Request $request)
     {
         $this->walletID = $request->id;
-        $wallet = Wallet::firstOrCreate(['id' => $this->walletID], ['name' => $this->name])->load('stocks');
+        $wallet = auth()->user()->wallets()->firstOrCreate(['id' => $this->walletID], ['name' => $this->name])->load('stocks');
         foreach($wallet->stocks as $stock) {
             $this->selectedStock[$stock->pivot->id] = $stock->symbol;
             $this->selectedGoals[$stock->pivot->id] = $stock->pivot->goal;

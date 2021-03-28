@@ -12,8 +12,20 @@ class Stock extends Model
     protected $keyType = 'string';
     public $incrementing = false;
 
+    protected $appends = ['patrimonio_att'];
+
     public function wallets()
     {
-        return $this->belongsToMany(Wallet::class)->withPivot('id', 'goal');
+        return $this->belongsToMany(Wallet::class)->withPivot('id', 'goal', 'comprado');
     }
+
+    public function last_quote()
+    {
+        return $this->hasOne(LastQuote::class, 'symbol', 'symbol');
+    }
+
+    public function getPatrimonioAttAttribute(){
+        return $this->pivot->comprado * $this->last_quote->price;
+    }
+
 }

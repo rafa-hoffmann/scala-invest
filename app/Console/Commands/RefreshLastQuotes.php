@@ -64,7 +64,6 @@ class RefreshLastQuotes extends Command
             }
             set_time_limit(30);
             curl_setopt($c, CURLOPT_URL, "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=".$stock->symbol.".SAO&apikey=".$k);
-
             $response = curl_exec ($c);
             $data = json_decode($response, true);
 
@@ -72,7 +71,10 @@ class RefreshLastQuotes extends Command
                 $count++;
                 continue;
             }
-
+            if(!count($data["Global Quote"])){
+                $count++;
+                continue;
+            }
             $price = $data['Global Quote']['05. price'];
             if(empty($lastQuote)){
                 $lastQuote = new LastQuote;

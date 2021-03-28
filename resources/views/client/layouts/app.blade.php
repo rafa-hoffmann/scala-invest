@@ -26,7 +26,7 @@
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex flex-row justify-between">
                     @yield('header')
                     @if (session()->has('message'))
-                            <div id="alert" class="text-white p-2 border-0 rounded bg-green-500 flex flex-row">
+                            <div id="alert" class="text-white p-2 border-0 rounded-full bg-green-500 flex flex-row">
                                 <span class="flex-1 nline-block align-middle mr-8">
                                     {{ session('message') }}
                                 </span>

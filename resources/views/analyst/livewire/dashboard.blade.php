@@ -1,6 +1,6 @@
 <div>
 @if (session()->has('message'))
-    <div id="alert" class="text-white p-2 mb-4 border-0 rounded bg-green-500 flex flex-row">
+    <div id="alert" class="text-white p-2 mb-4 border-0 rounded-full bg-green-500 flex flex-row">
         <span class="flex-1 nline-block align-middle mr-8">
             {{ session('message') }}
         </span>
@@ -11,7 +11,7 @@
     @endif
     <div class="p-2 text-right">
         <button
-            class='focus:outline-none text-white text-sm py-2.5 px-5 rounded-md bg-green-500 hover:bg-green-600 hover:shadow-lg'
+            class='focus:outline-none text-white text-sm py-2.5 px-5 rounded-full bg-green-500 hover:bg-green-600 hover:shadow-lg'
             wire:click="create">Novo Cliente</button>
     </div>
     <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg px-4 py-4">
@@ -76,7 +76,7 @@
                                         @else
                                         <a href="#" wire:click.prevent="delete({{$client->id}})"
                                             class="text-indigo-600 hover:text-indigo-900">Excluir</a>
-                                        @endif                                    
+                                        @endif
                                     </td>
                                 </tr>
                                 @endforeach

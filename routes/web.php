@@ -26,6 +26,10 @@ Route::get('/wallets/update', function () {
     return view('client.wallets.update');
 })->middleware(['auth'])->name('wallet.update');
 
+Route::get('/wallets/buysell', function () {
+    return view('client.wallets.buysell');
+})->middleware(['auth'])->name('wallet.buysell');
+
 Route::get('/quotes', 'App\Http\Controllers\Quotes@index');
 
 require __DIR__.'/auth.php';
