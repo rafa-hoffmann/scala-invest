@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Client;
 
 use App\Models\Stock;
+use App\Models\Wallet;
 use Illuminate\Http\Request;
 use Livewire\Component;
 
@@ -11,7 +12,7 @@ class UpdateWallet extends Component
     public $selectedStock = [];
     public $selectedGoals = [];
     public $name = '';
-    public $wallet;
+    public Wallet $wallet;
 
     protected $rules = [
         'name' => 'required|min:3|max:255'
@@ -21,7 +22,7 @@ class UpdateWallet extends Component
     {
         $this->walletID = $request->id;
         $wallet = auth()->user()->wallets()->firstOrCreate(['id' => $this->walletID], ['name' => $this->name])->load('stocks');
-        foreach($wallet->stocks as $stock) {
+        foreach ($wallet->stocks as $stock) {
             $this->selectedStock[$stock->pivot->id] = $stock->symbol;
             $this->selectedGoals[$stock->pivot->id] = $stock->pivot->goal;
         }
@@ -45,6 +46,11 @@ class UpdateWallet extends Component
     public function updatedSelectedGoals($value, $name)
     {
         $this->validateOnly('name');
+
+        if (!is_numeric($value)) {
+            session()->flash('error', 'Objetivo inválido');
+            return;
+        }
         if ($value > 100 || $value < 0) {
             session()->flash('error', 'O objetivo precisa estar entre 0% e 100%.');
             return;
@@ -83,8 +89,17 @@ class UpdateWallet extends Component
         foreach ($this->wallet->stocks as $stock) {
             $goal -= $stock->pivot->goal;
         }
+
+        if ($goal <= 0) {
+            $goal = 0.01;
+        }
+
         $this->wallet->stocks()->attach($stock, ['goal' => $goal]);
         $this->wallet->load('stocks');
+        $pivot = $this->wallet->stocks->last()->pivot;
+        $this->selectedGoals[$pivot->id] = $goal;
+
+        $this->updatedSelectedGoals($goal, 'selectedGoals.'.$pivot->id);
     }
 
     public function removeStock($id)
@@ -107,7 +122,7 @@ class UpdateWallet extends Component
     public function render()
     {
         return view('client.livewire.update-wallet', [
-            'dbStocks' => Stock::all()
+            'dbStocks' => Stock::with('last_quote')->get()
         ]);
     }
 }

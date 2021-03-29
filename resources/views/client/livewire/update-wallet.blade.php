@@ -23,11 +23,11 @@
     <div class="flex flex-col">
         <div class="py-2 align-middle inline-block min-w-full">
             <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                <table class="min-w-full divide-y divide-gray-200">
+                <table class="min-w-full divide-y divide-gray-200 p-4">
                     <thead class="bg-gray-50">
                         <tr>
                             <th scope="col"
-                                class="pr-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Ativo
                             </th>
                             <th scope="col"
@@ -44,19 +44,18 @@
                     <tbody class="bg-white divide-y divide-gray-200">
                         @foreach($this->wallet->stocks as $stock)
                         <tr>
-                            <td class="pr-6 py-4 whitespace-nowrap">
+                            <td class="px-6 py-4 whitespace-nowrap">
                                 <select id="stock{{$stock->pivot->id}}" wire:model="selectedStock.{{$stock->pivot->id}}"
                                     class="block w-full border border-gray-300 bg-white rounded-full shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                                     @foreach ($dbStocks as $dbStock)
-                                    <option>{{$dbStock->symbol}}</option>
+                                    <option value="{{$dbStock->symbol}}">{{$dbStock->symbol}}</option>
                                     @endforeach
                                 </select>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="mt-1 flex rounded-md shadow-sm">
                                     <x-input id="objetivo{{$stock->pivot->id}}" class="w-full rounded-r-none"
-                                        type="number" min="0.00" max="100.00" step=".01" value="{{$stock->pivot->goal}}"
-                                        wire:model="selectedGoals.{{$stock->pivot->id}}" required />
+                                        type="number" min="0.00" max="100.00" step=".01" wire:model="selectedGoals.{{$stock->pivot->id}}" required />
                                     <span
                                         class="inline-flex items-center px-3 rounded-r-full border border-l-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
                                         %
