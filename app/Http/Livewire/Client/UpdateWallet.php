@@ -51,6 +51,7 @@ class UpdateWallet extends Component
             session()->flash('error', 'Objetivo inválido');
             return;
         }
+
         if ($value > 100 || $value < 0) {
             session()->flash('error', 'O objetivo precisa estar entre 0% e 100%.');
             return;
@@ -99,7 +100,7 @@ class UpdateWallet extends Component
         $pivot = $this->wallet->stocks->last()->pivot;
         $this->selectedGoals[$pivot->id] = $goal;
 
-        $this->updatedSelectedGoals($goal, 'selectedGoals.'.$pivot->id);
+        $this->updatedSelectedGoals($goal, $pivot->id);
     }
 
     public function removeStock($id)
