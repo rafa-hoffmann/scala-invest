@@ -63,7 +63,7 @@
                                             {{$stock->symbol}}
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            TODO
+                                            {{$stock->sector}}
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             {{$stock->pivot->comprado}}

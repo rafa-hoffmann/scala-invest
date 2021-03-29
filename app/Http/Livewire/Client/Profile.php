@@ -112,7 +112,11 @@ class Profile extends Component
         User::updateOrCreate(['id' => $this->userId],$data);
 
         session()->flash('message', 'Cadastro atualizado.');
-        return redirect()->to('/client/profile');
+
+        if($this->status == 'ATIVO'){
+            return redirect()->to('/client/profile');
+        }
+        return redirect()->to('/dashboard');
     }
 
     public function render()
