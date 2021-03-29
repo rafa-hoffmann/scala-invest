@@ -7,6 +7,8 @@ use Livewire\Component;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
+use Manny;
+
 class Profile extends Component
 {
     public $userId;
@@ -34,7 +36,7 @@ class Profile extends Component
         'email' => 'required|email',
         'last_name' => 'required|min:2',
         'rg' => 'required|min:4',
-        'cpf' => 'required|min:4',
+        'cpf' => 'required|min:14',
         'phone' => 'required|min:4',
         'street' => 'required|min:4',
         'number' => 'required|min:1',
@@ -67,6 +69,22 @@ class Profile extends Component
         $this->oldPassword = $model->password;
     }
 
+    public function updated($field)
+	{
+		if ($field == 'phone')
+		{
+			$this->phone = Manny::mask($this->phone, "(11) 11111-1111");
+		}
+        if ($field == 'cpf')
+		{
+			$this->cpf = Manny::mask($this->cpf, "111.111.111-11");
+		}
+        if ($field == 'zip_code')
+		{
+			$this->zip_code = Manny::mask($this->zip_code, "11111-111");
+		}
+	}
+
     public function save()
     {
         $this->validate([
@@ -74,7 +92,7 @@ class Profile extends Component
             'email' => 'required|email|unique:users,email,'.$this->userId,
             'last_name' => 'required|min:2',
             'rg' => 'required|min:4',
-            'cpf' => 'required|min:4',
+            'cpf' => 'required|min:14',
             'phone' => 'required|min:4',
             'street' => 'required|min:4',
             'number' => 'required|min:1',
