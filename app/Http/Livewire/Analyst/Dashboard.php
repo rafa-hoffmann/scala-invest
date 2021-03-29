@@ -188,11 +188,11 @@ class Dashboard extends Component
     {
         $this->user_id = $id;
         $user = User::findOrFail($id);
-        if($user->status == 'ATIVO'){
+        if($user->status == 'ATIVO' || $user->status == 'ENVIADO'){
             $user->status = 'INATIVO';
         }
         else if($user->status == 'INATIVO'){
-            $user->status = 'ATIVO';
+            $user->status = 'ENVIADO';
         }
         $user->save();
         session()->flash('message', 'Cadastro alterado.');
