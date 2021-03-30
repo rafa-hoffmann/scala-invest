@@ -44,7 +44,7 @@
                         class="block text-gray-700 text-sm font-bold mb-2">CPF:</label>
                     <input type='text'
                         class="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        id="exampleFormControlInput5" wire:model="cpf" placeholder="CPF">
+                        id="exampleFormControlInput5" wire:model.debounce.500ms="cpf" placeholder="CPF">
                     @error('cpf') <span class="text-red-500">{{ $message }}</span>@enderror
                 </div>
                 <div class="mb-4">
@@ -52,7 +52,7 @@
                         class="block text-gray-700 text-sm font-bold mb-2">Telefone:</label>
                     <input type='text'
                         class="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        id="exampleFormControlInput6" wire:model="phone" placeholder="Telefone">
+                        id="exampleFormControlInput6" wire:model.debounce.500ms="phone" placeholder="Telefone">
                     @error('phone') <span class="text-red-500">{{ $message }}</span>@enderror
                 </div>
                 <div class="mb-4">
@@ -108,7 +108,7 @@
                         class="block text-gray-700 text-sm font-bold mb-2">CEP:</label>
                     <input type='text'
                         class="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        id="exampleFormControlInput12" wire:model="zip_code" placeholder="CEP">
+                        id="exampleFormControlInput12" wire:model.debounce.500ms="zip_code" placeholder="CEP">
                     @error('zip_code') <span class="text-red-500">{{ $message }}</span>@enderror
                 </div>
                 <div class="mb-4">

@@ -11,7 +11,7 @@ use Illuminate\Support\Str;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-use function Ramsey\Uuid\v1;
+use Manny;
 
 class Dashboard extends Component
 {
@@ -30,6 +30,22 @@ class Dashboard extends Component
     public $zip_code;
     public $isOpen = 0;
     private $clients;
+
+    public function updated($field)
+	{
+		if ($field == 'phone')
+		{
+			$this->phone = Manny::mask($this->phone, "(11) 11111-1111");
+		}
+        if ($field == 'cpf')
+		{
+			$this->cpf = Manny::mask($this->cpf, "111.111.111-11");
+		}
+        if ($field == 'zip_code')
+		{
+			$this->zip_code = Manny::mask($this->zip_code, "11111-111");
+		}
+	}
 
     public function render()
     {
@@ -108,7 +124,7 @@ class Dashboard extends Component
             'email' => 'required|email|unique:users,email,'.$this->user_id,
             'last_name' => 'required|min:2',
             'rg' => 'required|min:4',
-            'cpf' => 'required|min:4',
+            'cpf' => 'required|min:14',
             'phone' => 'required|min:4',
             'street' => 'required|min:4',
             'number' => 'required|min:1',
@@ -188,11 +204,11 @@ class Dashboard extends Component
     {
         $this->user_id = $id;
         $user = User::findOrFail($id);
-        if($user->status == 'ATIVO'){
+        if($user->status == 'ATIVO' || $user->status == 'ENVIADO'){
             $user->status = 'INATIVO';
         }
         else if($user->status == 'INATIVO'){
-            $user->status = 'ATIVO';
+            $user->status = 'ENVIADO';
         }
         $user->save();
         session()->flash('message', 'Cadastro alterado.');
