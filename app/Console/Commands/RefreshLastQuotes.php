@@ -79,8 +79,12 @@ class RefreshLastQuotes extends Command
             if(empty($lastQuote)){
                 $lastQuote = new LastQuote;
             }
+            $previousClose = $data['Global Quote']['08. previous close'];
             $lastQuote->symbol = $stock->symbol;
             $lastQuote->price = $price;
+            $lastQuote->previous_close = $previousClose;
+            $lastQuote->change = $lastQuote->price - $previousClose;
+            $lastQuote->change_percent = (($lastQuote->price / $lastQuote->previous_close) - 1) * 100;
             $lastQuote->save();
             $count++;
         }
