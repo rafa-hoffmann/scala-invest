@@ -47,10 +47,6 @@
                                         </th>
                                         <th scope="col"
                                             class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Gerenciar
-                                        </th>
-                                        <th scope="col"
-                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             Editar
                                         </th>
                                     </tr>
@@ -73,10 +69,7 @@
                                                 {{ucfirst(strtolower($client->status))}}
                                             </span>
                                         </td>
-                                        <td class="px-6 py-4 whitespace-nowrap">
-                                            <a wire:click="edit({{ $client->id }})"
-                                                class="text-indigo-600 hover:text-indigo-900" href="#">Gerenciar</a>
-                                        </td>
+
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <a wire:click="edit({{ $client->id }})"
                                                 class="text-indigo-600 hover:text-indigo-900" href="#">Editar</a> /
