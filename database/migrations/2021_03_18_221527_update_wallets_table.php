@@ -27,7 +27,7 @@ class UpdateWalletsTable extends Migration
     public function down()
     {
         Schema::table('wallets', function (Blueprint $table) {
-            $table->dropForeign('wallets_users_user_id_foreign');
+            $table->dropForeign(['user_id']);
             $table->dropColumn('user_id');
         });
     }

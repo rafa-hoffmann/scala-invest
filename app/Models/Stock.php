@@ -24,8 +24,11 @@ class Stock extends Model
         return $this->hasOne(LastQuote::class, 'symbol', 'symbol');
     }
 
-    public function getPatrimonioAttAttribute(){
-        return $this->pivot->comprado * $this->last_quote->price;
+    public function getPatrimonioAttAttribute()
+    {
+        if (!empty($this->last_quote)) {
+            return $this->pivot->comprado * $this->last_quote->price;
+        }
+        return 0;
     }
-
 }
