@@ -17,7 +17,7 @@ class Wallet extends Model
 
     public function stocks()
     {
-        return $this->belongsToMany(Stock::class)->withPivot('id', 'goal', 'comprado');
+        return $this->belongsToMany(Stock::class)->withPivot('id', 'goal','goal_distance', 'comprado');
     }
 
     public function getSomaPatrimonioAttribute()

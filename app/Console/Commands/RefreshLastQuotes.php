@@ -49,9 +49,9 @@ class RefreshLastQuotes extends Command
         $k = random_int(0,1) == 1 ? "DDIBTY359Y3G6Y7W" : "32MNTBD8X0ZE1HNQ";
         echo $k;                         
         foreach ($stocks as $stock){
-            if($count == 5){
-                break;
-            }
+            // if($count == 5){
+            //     break;
+            // }
             $lastQuote = null;
             foreach($quotes as $quote){
                 if($quote->symbol == $stock->symbol){
