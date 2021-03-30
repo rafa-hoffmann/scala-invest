@@ -16,6 +16,8 @@
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
         @livewireStyles
+
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
@@ -23,7 +25,7 @@
 
             <!-- Page Heading -->
             <header class="bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex flex-row justify-between">
+                <div class="mx-auto py-6 px-4 sm:px-6 lg:px-8 flex flex-row justify-between">
                     @yield('header')
                     @if (session()->has('message'))
                             <div id="alert" class="text-white p-2 border-0 rounded-full bg-green-500 flex flex-row">

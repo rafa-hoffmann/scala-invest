@@ -13,7 +13,8 @@
     <div class="flex flex-wrap overflow-hidden items-center shadow-md">
         <div class="my-2 w-10/12 overflow-hidden">
             <div class="text-center lg:text-left">
-                <h1 class="text-3xl font-bold pt-8 lg:pt-0 ml-2">{{empty($wallet->name) ? 'Carteira' : $wallet->name}}</h1>
+                <h1 class="text-3xl font-bold pt-8 lg:pt-0 ml-2">{{empty($wallet->name) ? 'Carteira' : $wallet->name}}
+                </h1>
                 <div class="pt-3 border-b-2 border-green-500 opacity-50"></div>
                 <div class="flex flex-col">
                     <div class="py-2 align-middle inline-block min-w-full">
@@ -104,6 +105,97 @@
                 </a>
             </div>
         </div>
+        <div class="flex flex-wrap w-full overflow-hidden lg:-mx-2">
+            <div class="w-full overflow-hidden lg:my-2 lg:px-2 lg:w-1/2">
+                <div class="block h-80 pb-5">
+                    <h1 class="text-xl font-bold pt-8 lg:pt-0 ml-2">Atual</h1>
+                    <div id="currentChart{{$wallet->id}}" class="max-h-80"></div>
+                </div>
+            </div>
+            <div class="w-full overflow-hidden lg:my-2 lg:px-2 lg:w-1/2">
+                <div class="block h-80 pb-5">
+                    <h1 class="text-xl font-bold pt-8 lg:pt-0 ml-2">Recomendado</h1>
+                    <div id="recommendedChart{{$wallet->id}}" class="max-h-80"></div>
+                </div>
+            </div>
+
+        </div>
+        <div class="w-full overflow-hidden lg:my-2 lg:px-2 lg:w-full">
+            <div class="block h-80 pb-5">
+                <h1 class="text-xl font-bold pt-8 lg:pt-0 ml-2">Setores</h1>
+                <div id="sectorChart{{$wallet->id}}" class="max-h-80"></div>
+            </div>
+        </div>
+        <script>
+            var optionsCurrentChart = {
+                    series: @json($stockChart[$wallet->id]['data']),
+                    chart: {
+                        type: 'donut',
+                        height: '100%'
+                    },
+                    labels: @json($stockChart[$wallet->id]['legends']),
+                    responsive: [{
+                        breakpoint: 480,
+                        options: {
+                            chart: {
+                                width: 500
+                            },
+                            legend: {
+                                position: 'bottom'
+                            }
+                        }
+                    }]
+                };
+
+            new ApexCharts(document.querySelector("#currentChart{{$wallet->id}}"), optionsCurrentChart).render();
+
+            var optionsRecommendedChart = {
+                    series: @json($recommendedChart[$wallet->id]['data']),
+                    chart: {
+                        type: 'donut',
+                        height: '100%'
+                    },
+                    dataLabels: {
+                        enabled: false
+                    },
+                    labels: @json($recommendedChart[$wallet->id]['legends']),
+                    responsive: [{
+                        breakpoint: 480,
+                        options: {
+                            chart: {
+                                width: 500
+                            },
+                            legend: {
+                                position: 'bottom'
+                            }
+                        }
+                    }]
+                };
+
+            new ApexCharts(document.querySelector("#recommendedChart{{$wallet->id}}"), optionsRecommendedChart).render();
+
+            var optionsSectorChart = {
+                    series: @json($sectorChart[$wallet->id]['data']),
+                    chart: {
+                        type: 'donut',
+                        height: '100%'
+                    },
+                    labels: @json($sectorChart[$wallet->id]['legends']),
+                    responsive: [{
+                        breakpoint: 480,
+                        options: {
+                            chart: {
+                                width: 500
+                            },
+                            legend: {
+                                position: 'bottom'
+                            }
+                        }
+                    }]
+                };
+
+            new ApexCharts(document.querySelector("#sectorChart{{$wallet->id}}"), optionsSectorChart).render();
+        </script>
     </div>
     @endforeach
 </div>
