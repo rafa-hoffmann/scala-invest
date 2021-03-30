@@ -81,8 +81,7 @@
                                         {{number_format($stock->pivot->goal, 2, ',', '.')}}%
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        {{number_format(((($wallet->soma_patrimonio == 0)?0:$stock->patrimonio_att / $wallet->soma_patrimonio * 100) - $stock->pivot->goal),2,',','.')}}
-                                        %
+                                        {{number_format($stock->pivot->goal_distance,2,',','.')}} %
                                     </td>
                                 </tr>
                                 @endforeach
