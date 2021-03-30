@@ -1,5 +1,5 @@
-<div>
-    <div class="flex flex-wrap -mx-1 overflow-hidden">
+<div class="p-2">
+    <div class="flex flex-wrap overflow-hidden">
         <div class="my-1 px-1 w-full overflow-hidden md:w-1/2">
             <x-label for="name" :value="__('Nome')" />
             <x-input id="name" class="w-full xl:w-9/12 mt-1" type="text" name="name" :value="old('name')" required

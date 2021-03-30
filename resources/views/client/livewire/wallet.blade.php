@@ -1,4 +1,4 @@
-<div class="xs:p-10">
+<div>
     <div class="flex flex-wrap w-full justify-end mt-5">
         <div class="px-2 w-2/12 overflow-hidden">
             <div class="flex flex-col space-y-2">
