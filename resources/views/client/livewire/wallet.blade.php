@@ -85,6 +85,27 @@
                                     </td>
                                 </tr>
                                 @endforeach
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        Total
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        R$ {{number_format($wallet->soma_patrimonio, 2, ',', '.')}}
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        {{number_format($totalGoal[$wallet->id], 2, ',', '.')}}%
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -100,6 +121,10 @@
                 <a class="bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded-full text-center"
                     href="{{route('wallet.buysell', ['id' => $wallet->id])}}">
                     Compra / Venda
+                </a>
+                <a class="hover:bg-gray-400  border border-gray-600 text-black font-bold py-2 px-4 rounded-full text-center"
+                    href="{{route('wallet.history', ['id' => $wallet->id])}}">
+                    Histórico
                 </a>
             </div>
         </div>

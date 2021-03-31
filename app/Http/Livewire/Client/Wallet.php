@@ -10,6 +10,8 @@ class Wallet extends Component
     public $stockChart = [];
     public $recommendedChart = [];
     public $sectorChart = [];
+    public $totalComprado = [];
+    public $totalGoal = [];
 
     public function mount() {
         $wallets = auth()->user()->wallets()->withCount('stocks')->with('stocks', 'stocks.last_quote')->get();
@@ -17,7 +19,11 @@ class Wallet extends Component
             if ($wallet->stocks_count == 0) {
                 $wallet->delete();
             }
+            $this->totalComprado[$wallet->id] = 0;
+            $this->totalGoal[$wallet->id] = 0;
             foreach ($wallet->stocks as $stock) {
+                $this->totalComprado[$wallet->id] += $stock->pivot->comprado;
+                $this->totalGoal[$wallet->id] += $stock->pivot->goal;
                 $this->stockChart[$wallet->id]['data'][] = $stock->patrimonio_att;
                 $this->stockChart[$wallet->id]['legends'][] = $stock->symbol;
                 $this->recommendedChart[$wallet->id]['data'][] = $stock->pivot->goal*100;

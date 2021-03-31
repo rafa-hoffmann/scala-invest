@@ -26,6 +26,10 @@ Route::get('/wallets/update', function () {
     return view('client.wallets.update');
 })->middleware(['auth'])->name('wallet.update');
 
+Route::get('/wallets/history', function () {
+    return view('client.wallets.history');
+})->middleware(['auth'])->name('wallet.history');
+
 Route::get('/wallets/buysell', function () {
     return view('client.wallets.buysell');
 })->middleware(['auth'])->name('wallet.buysell');

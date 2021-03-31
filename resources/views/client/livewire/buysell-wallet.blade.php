@@ -1,22 +1,12 @@
 <div>
     <div class="flex flex-wrap -mx-1 overflow-hidden">
-        <div class="my-1 px-8 w-full overflow-hidden md:w-1/2">
-            <x-label for="name" :value="__('Nome')" />
-            <x-input id="name" class="w-full xl:w-9/12 mt-1" type="text" name="name" :value="old('name')" required
-                autofocus wire:model="name" disabled />
-            @error('name')
-            <div class="text-white p-2 my-2 border-0 rounded-full bg-red-500 flex flex-row">
-                <span class="flex-1 inline-block align-middle mr-8">
-                    {{ $message }}
-                </span>
-            </div>
-            @enderror
+        <div class="my-1 py-4 px-8 w-full overflow-hidden md:w-1/2">
+            <h1 class="text-3xl font-bold pt-8 lg:pt-0 ml-2">{{$name}}</h1>
         </div>
-
         <div class="my-1 right-0 w-full overflow-hidden md:w-1/2">
             <x-label for="valor" :value="__('Valor')" />
-            <x-input class='right-0' id="valor" class="w-full xl:w-9/12 mt-1" type="number" name="valor" :value="old('valor')"
-             wire:model="valor"/>
+            <x-input class='right-0' id="valor" class="w-full xl:w-9/12 mt-1" type="number" name="valor"
+                :value="old('valor')" wire:model="valor" />
             @error('valor')
             <div class="text-white p-2 my-2 border-0 rounded-full bg-red-500 flex flex-row">
                 <span class="flex-1 inline-block align-middle mr-8">
@@ -27,14 +17,14 @@
         </div>
     </div>
     @if (session()->has('error'))
-    <div id="alert" class="text-white p-2 my-2 border-0 rounded-full bg-red-500 flex flex-row">
+    <div id="alert" class="text-white p-2 m-2 border-0 rounded-full bg-red-500 flex flex-row">
         <span class="flex-1 inline-block align-middle mr-8">
             {{ session('error') }}
         </span>
     </div>
     @endif
     @if (session()->has('success'))
-    <div id="alert" class="text-white p-2 my-2 border-0 rounded-full bg-green-500 flex flex-row">
+    <div id="alert" class="text-white p-2 m-2 border-0 rounded-full bg-green-500 flex flex-row">
         <span class="flex-1 inline-block align-middle mr-8">
             {{ session('success') }}
         </span>
@@ -47,7 +37,7 @@
                     <thead class="bg-gray-50">
                         <tr>
                             <th scope="col"
-                                class="pr-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Ativo
                             </th>
                             <th scope="col"
@@ -92,7 +82,7 @@
                     <tbody class="bg-white divide-y divide-gray-200">
                         @foreach($this->wallet->stocks as $stock)
                         <tr>
-                            <td class="pr-6 py-4 whitespace-nowrap">
+                            <td class="px-6 py-4 whitespace-nowrap">
                                 {{$stock->symbol}}
                             </td>
                             <td class="pr-6 py-4 whitespace-nowrap">
@@ -102,43 +92,32 @@
                                 R$ {{number_format($stock->patrimonio_att, 2, ',', '.')}}
                             </td>
                             <td class="pr-6 py-4 whitespace-nowrap">
-                                <div class="mt-1 flex rounded-md shadow-sm">
                                 {{($wallet->soma_patrimonio == 0)?0.00:number_format($stock->patrimonio_att / $wallet->soma_patrimonio * 100 , 2, ',', '.')}}%
-                                </div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
-                                <div class="mt-1 flex rounded-md shadow-sm">
-                                    {{$stock->pivot->goal}}%
-                                </div>
+                                {{$stock->pivot->goal}}%
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
-                                <div class="mt-1 flex rounded-md shadow-sm">
                                 {{number_format($stock->pivot->goal_distance,2,',','.')}}%
-                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                {{$stock->pivot->comprado}}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="mt-1 flex rounded-md shadow-sm">
-                                    {{$stock->pivot->comprado}}
+                                    <x-input id="quantidade{{$stock->pivot->id}}" class="w-full" type="number" min="0"
+                                        step="1" value="0" wire:model="selectedQnt.{{$stock->pivot->id}}" required />
                                 </div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
-                                <div class="mt-1 flex rounded-md shadow-sm">
-                                    <x-input id="quantidade{{$stock->pivot->id}}" class="w-full rounded-r-none"
-                                        type="number" min="0.00" max="100.00" step="1" value="0"
-                                        wire:model="selectedQnt.{{$stock->pivot->id}}" required />
-                                </div>
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap">
-                                <div class="mt-1 flex rounded-md shadow-sm">
-                                    {{$sugestions[$stock->pivot->id]??0}}
-                                </div>
+                                {{$sugestions[$stock->pivot->id]??0}}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <a wire:click="comprarStock({{$stock->pivot->id}})"
                                     class="text-indigo-600 hover:text-indigo-900 uppercase text-xs font-medium tracking-wider"
                                     href="#">Comprar</a>
-                                    /
-                                    <a wire:click="venderStock({{$stock->pivot->id}})"
+                                /
+                                <a wire:click="venderStock({{$stock->pivot->id}})"
                                     class="text-indigo-600 hover:text-indigo-900 uppercase text-xs font-medium tracking-wider"
                                     href="#">Vender</a>
                             </td>
@@ -150,7 +129,8 @@
         </div>
     </div>
     <div class="flex w-full justify-center my-10 space-x-5">
-        <a class="bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded-full w-2/12 text-center" href="{{route('dashboard')}}">
+        <a class="bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded-full w-2/12 text-center"
+            href="{{route('dashboard')}}">
             Voltar
         </a>
     </div>

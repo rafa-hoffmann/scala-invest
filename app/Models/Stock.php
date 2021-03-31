@@ -26,7 +26,7 @@ class Stock extends Model
 
     public function getPatrimonioAttAttribute()
     {
-        if (!empty($this->last_quote)) {
+        if (!empty($this->last_quote) && !empty($this->pivot)) {
             return $this->pivot->comprado * $this->last_quote->price;
         }
         return 0;
