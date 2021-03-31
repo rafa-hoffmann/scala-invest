@@ -132,13 +132,13 @@
     <div class="flex flex-wrap w-full overflow-hidden lg:-mx-2">
         <div class="w-full overflow-hidden lg:my-2 lg:px-2 lg:w-1/2">
             <div class="block h-80 pb-5">
-                <h1 class="text-xl font-bold pt-8 lg:pt-0 ml-2">Atual</h1>
+                <h1 class="text-xl font-bold pt-8 lg:pt-0 text-center">Atual</h1>
                 <div id="currentChart{{$wallet->id}}" class="max-h-80"></div>
             </div>
         </div>
         <div class="w-full overflow-hidden lg:my-2 lg:px-2 lg:w-1/2">
             <div class="block h-80 pb-5">
-                <h1 class="text-xl font-bold pt-8 lg:pt-0 ml-2">Recomendado</h1>
+                <h1 class="text-xl font-bold pt-8 lg:pt-0 text-center">Recomendado</h1>
                 <div id="recommendedChart{{$wallet->id}}" class="max-h-80"></div>
             </div>
         </div>
@@ -146,7 +146,7 @@
     </div>
     <div class="w-full overflow-hidden lg:my-2 lg:px-2 lg:w-full">
         <div class="block h-80 pb-5">
-            <h1 class="text-xl font-bold pt-8 lg:pt-0 ml-2">Setores</h1>
+            <h1 class="text-xl font-bold pt-8 lg:pt-0 text-center">Setores</h1>
             <div id="sectorChart{{$wallet->id}}" class="max-h-80"></div>
         </div>
     </div>
