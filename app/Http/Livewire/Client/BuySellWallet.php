@@ -116,8 +116,11 @@ class BuySellWallet extends Component
 
     public function sugerirCompra()
     {
+        if (!is_numeric($this->valor)) {
+            return;
+        }
+
         $goals_distances = $this->wallet->stocks->pluck('pivot')->toArray();
-        //dd($goals_distances);
         $negatives = array_filter($goals_distances, function ($value) {
             return $value['goal_distance'] < 0;
         });
