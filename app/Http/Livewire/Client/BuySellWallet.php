@@ -117,6 +117,7 @@ class BuySellWallet extends Component
     public function sugerirCompra()
     {
         if (!is_numeric($this->valor)) {
+            $this->sugestions = [];
             return;
         }
 
